@@ -17,8 +17,6 @@
                 const password = document.getElementById("password").value;
                 const cpassword = document.getElementById("cpassword").value;
     
-                console.log("Form values:", { username, email, password, cpassword }); // Debugging
-    
                 clearErrors();
     
                 // Validate fields
@@ -45,7 +43,6 @@
                 }
     
                 if (isValid) {
-                    // Send data to backend
                     fetch('http://localhost:3000/register', {
                         method: 'POST',
                         headers: {
@@ -53,19 +50,15 @@
                         },
                         body: JSON.stringify({ username, email, password })
                     })
-                    .then(response => {
-                        console.log("Response status:", response.status); // Debugging
-                        return response.json();
-                    })
+                    .then(response => response.json())
                     .then(data => {
-                        console.log("Response data:", data); // Debugging
                         if (data.error) {
                             setError("email", data.error);
                         } else {
                             window.location.href = "tech.html";
                         }
                     })
-                    .catch(error => console.error("Fetch error:", error)); // Debugging
+                    .catch(error => console.error("Fetch error:", error));
                 }
             });
     
@@ -87,7 +80,6 @@
             }
         });
     </script>
-    
 </head>
 <body>
     <div class="container">
