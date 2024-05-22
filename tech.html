@@ -45,7 +45,6 @@
             document.getElementById('emailError').textContent = '';
             document.getElementById('passwordError').textContent = '';
             
-            // Validate email
             const email = document.getElementById('email').value;
             const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
             
@@ -53,7 +52,7 @@
                 document.getElementById('emailError').textContent = 'Please enter a valid Gmail address.';
                 valid = false;
             }
-            // Validate password
+
             const password = document.getElementById('password').value;
             if (password.length < 8) {
                 document.getElementById('passwordError').textContent = 'Password must be at least 8 characters long.';
@@ -75,7 +74,8 @@
                     } else {
                         alert('Login successful');
                     }
-                });
+                })
+                .catch(error => console.error('Fetch error:', error));
             }
         });
     </script>
